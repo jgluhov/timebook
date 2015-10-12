@@ -30,30 +30,12 @@ describe("Interval: HomeController", function() {
     it("causes a interval to be called synchronously", function() {
       setInterval(function() {
         timerCallback();
-      }, 100);
+      }, 1000);
 
       expect(timerCallback).not.toHaveBeenCalled();
 
-      jasmine.clock().tick(101);
+      jasmine.clock().tick(1001);
 
       expect(timerCallback).toHaveBeenCalled();
     });
-
-    it("causes an interval to be called synchronously", function() {
-      setInterval(function() {
-        timerCallback();
-      }, 100);
-
-      expect(timerCallback).not.toHaveBeenCalled();
-
-      jasmine.clock().tick(101);
-      expect(timerCallback.calls.count()).toEqual(1);
-
-      jasmine.clock().tick(50);
-      expect(timerCallback.calls.count()).toEqual(1);
-
-      jasmine.clock().tick(50);
-      expect(timerCallback.calls.count()).toEqual(2);
-    });
-
 });
