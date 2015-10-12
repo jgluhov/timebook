@@ -15,4 +15,6 @@ app.get('/amount', function (req, res) {
   res.json(Math.floor(Math.random() * (high - low + 1) + low))
 });
 
-app.listen(3000);
+var port = process.env.PORT || '3000';
+app.set('port', port);
+app.listen(port);
